@@ -1,24 +1,27 @@
-import './App.css'
 import {GlobalStyle} from './styles/global'
 import {defaultTheme} from './styles/default'
 import {ThemeProvider} from 'styled-components'
 import {Header} from './component/Header/Header'
-//import {useDispatch} from 'react-redux'
-import {useAppDispatch} from './store/store'
-import {decrement, increment} from './features/productSlice'
+import { Home } from './page/Home/home'
+import { Cart } from './page/Cart/Cart'
+import { BrowserRouter ,Routes, Route} from 'react-router-dom'
 
 function App() {
-  const dispatch = useAppDispatch()
+  //const dispatch = useAppDispatch()
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle/>
         <div className="App">
-          <Header/>  
-          <div className="App-container">
-            <button onClick={() => dispatch(decrement())}>-</button>
-            <button onClick={() => dispatch(increment())} >+</button> 
-          </div>  
+          <BrowserRouter>
+            <Header/>
+            <Routes>
+              <Route path='/' element={<Home/>}  />
+              <Route path='/cart' element={<Cart/>} />
+            </Routes>
+            
+          </BrowserRouter>
+          
         </div> 
     </ThemeProvider>
     
