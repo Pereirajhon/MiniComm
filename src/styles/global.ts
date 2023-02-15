@@ -1,5 +1,4 @@
 import {createGlobalStyle} from 'styled-components'
-//import { defaultTheme } from './default' 
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -9,7 +8,28 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        font-family: sans-serif;
+        font-family: Roboto, sans-serif;
+        background-color: ${(props) => props.theme.primary } ;
+        color: #404040;
+
+    }
+
+    header{
+        a{
+          color: #ffffff;
+        }
+    }
+
+    li{
+        list-style-type: none;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    button{
+        cursor: pointer;
     }
 
 `
