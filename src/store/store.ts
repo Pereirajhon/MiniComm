@@ -1,14 +1,19 @@
-import {configureStore} from '@reduxjs/toolkit'
-import productSlice from '../features/productSlice'
+import {configureStore, MiddlewareArray} from '@reduxjs/toolkit'
+//import productSlice from './features/productSlice'
+import { cartSlice } from './features/cartSlice'
+import { productApi } from './features/productApi' 
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
 
 
 
 export const store = configureStore({
-    reducer: {
-        product: productSlice,
-        //product : '',
+    reducer: { 
+        cart : cartSlice.reducer,
+        [productApi.reducerPath] : productApi.reducer,
     },
+
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(productApi.middleware)    
+
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
